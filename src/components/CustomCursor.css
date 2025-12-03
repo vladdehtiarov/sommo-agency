@@ -1,0 +1,58 @@
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width 0.3s var(--ease-out-expo), 
+              height 0.3s var(--ease-out-expo),
+              background 0.3s var(--ease-out-expo);
+}
+
+.custom-cursor-dot.hovering {
+  width: 0;
+  height: 0;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s var(--ease-out-expo), 
+              height 0.4s var(--ease-out-expo),
+              border-color 0.3s,
+              background 0.3s var(--ease-out-expo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-cursor-ring.hovering {
+  width: 100px;
+  height: 100px;
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.cursor-text {
+  color: var(--bg-primary);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+

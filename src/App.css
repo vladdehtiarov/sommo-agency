@@ -1,0 +1,64 @@
+/* App-level styles */
+
+/* Loading animation */
+body:not(.loaded) {
+  overflow: hidden;
+}
+
+body:not(.loaded) * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Smooth section transitions */
+main {
+  position: relative;
+}
+
+/* Global link hover effects */
+a {
+  transition: color 0.3s var(--ease-out-expo);
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .noise-overlay,
+  .custom-cursor-dot,
+  .custom-cursor-ring,
+  .header,
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
