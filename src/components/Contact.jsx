@@ -1,9 +1,52 @@
 import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+// eslint-disable-next-line no-unused-vars
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
+
+// EmailJS Configuration from environment variables
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+// Custom Toast Component
+const Toast = ({ message, type, onClose }) => {
+  return (
+    <motion.div
+      className={`toast toast-${type}`}
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 20, scale: 0.9 }}
+      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div className="toast-icon">
+        {type === 'success' ? (
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+            <path d="M12 8V12M12 16H12.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        )}
+      </div>
+      <div className="toast-content">
+        <span className="toast-title">{type === 'success' ? 'Success!' : 'Oops!'}</span>
+        <span className="toast-message">{message}</span>
+      </div>
+      <button className="toast-close" onClick={onClose} aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      </button>
+    </motion.div>
+  );
+};
 
 export const Contact = () => {
   const sectionRef = useRef(null);
+  const formRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
   const [formState, setFormState] = useState({
     name: '',
@@ -12,6 +55,12 @@ export const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type) => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 5000);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,11 +70,30 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    alert('Thank you! We\'ll be in touch soon.');
-    setFormState({ name: '', email: '', budget: '', message: '' });
+
+    try {
+      // EmailJS send
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formState.name,
+          from_email: formState.email,
+          budget: formState.budget,
+          message: formState.message,
+          to_email: 'hello@sommo.io',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      showToast("Thank you! We'll be in touch within 24 hours.", 'success');
+      setFormState({ name: '', email: '', budget: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      showToast('Something went wrong. Please try again or email us directly.', 'error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const budgetOptions = [
@@ -37,6 +105,17 @@ export const Contact = () => {
 
   return (
     <section ref={sectionRef} id="contact" className="contact">
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toast && (
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast(null)}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Background decorations */}
       <div className="contact-bg">
         <div className="contact-gradient-orb orb-1" />
@@ -107,7 +186,7 @@ export const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Your Name</label>
                 <input
@@ -192,4 +271,3 @@ export const Contact = () => {
     </section>
   );
 };
-
