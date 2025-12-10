@@ -114,20 +114,40 @@ export const Header = () => {
           </div>
 
           {navLinks.map((link, index) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              className="nav-link"
-              data-cursor="View"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index + 0.3, duration: 0.5 }}
-              whileHover={{ y: -2 }}
-              onClick={(e) => handleHashLink(e, link.href)}
-            >
-              <span className="nav-link-text">{link.name}</span>
-              <span className="nav-link-line" />
-            </motion.a>
+            link.href.startsWith('/#') ? (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                className="nav-link"
+                data-cursor="View"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index + 0.3, duration: 0.5 }}
+                whileHover={{ y: -2 }}
+                onClick={(e) => handleHashLink(e, link.href)}
+              >
+                <span className="nav-link-text">{link.name}</span>
+                <span className="nav-link-line" />
+              </motion.a>
+            ) : (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="nav-link"
+                data-cursor="View"
+              >
+                <motion.span
+                  className="nav-link-inner"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index + 0.3, duration: 0.5 }}
+                  whileHover={{ y: -2 }}
+                >
+                  <span className="nav-link-text">{link.name}</span>
+                  <span className="nav-link-line" />
+                </motion.span>
+              </Link>
+            )
           ))}
         </nav>
 
@@ -188,17 +208,30 @@ export const Header = () => {
               </div>
 
               {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  className="mobile-nav-link"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * (index + services.length) }}
-                  onClick={(e) => handleHashLink(e, link.href)}
-                >
-                  {link.name}
-                </motion.a>
+                link.href.startsWith('/#') ? (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    className="mobile-nav-link"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * (index + services.length) }}
+                    onClick={(e) => handleHashLink(e, link.href)}
+                  >
+                    {link.name}
+                  </motion.a>
+                ) : (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * (index + services.length) }}
+                  >
+                    <Link to={link.href} className="mobile-nav-link">
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                )
               ))}
               
               <motion.a
