@@ -131,18 +131,21 @@ const lowCodeData = {
       category: 'API Platform',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
       result: '200+ lenders integrated',
+      href: '/cases/miren',
     },
     {
       title: 'Curri Logistics',
       category: 'Operations',
       image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop',
       result: '100K+ deliveries tracked',
+      href: '/cases/curri',
     },
     {
-      title: 'Enterprise Dashboard',
+      title: 'M&A Software',
       category: 'Analytics',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       result: '50% faster reporting',
+      href: '/cases/ma-software',
     },
   ],
   faq: [

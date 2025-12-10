@@ -267,11 +267,14 @@
 }
 
 .case-card {
+  display: block;
   background: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all 0.4s var(--ease-out-expo);
+  text-decoration: none;
+  color: inherit;
 }
 
 .case-card:hover {

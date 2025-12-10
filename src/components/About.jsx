@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import './About.css';
 
@@ -7,22 +8,21 @@ const team = [
     name: 'Roman Samoilenko',
     role: 'CEO & Co-Founder',
     bio: 'Visionary leader driving Sommo\'s growth and strategic direction. Expert in no-code solutions and business development.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
+    image: '/team/roman.jpg',
     gradient: 'linear-gradient(135deg, #7B61FF 0%, #5A45D6 100%)',
     social: {
-      linkedin: '#',
-      twitter: '#',
+      linkedin: 'https://www.linkedin.com/in/roman-samoilenko/',
     },
   },
   {
     name: 'Vlad Dehtiarov',
     role: 'CTO & Co-Founder',
     bio: 'Technical mastermind behind Sommo\'s architecture. Specializes in no-code platforms, AI integration, and system design.',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face',
+    image: '/team/vlad.jpg',
     gradient: 'linear-gradient(135deg, #00FFC2 0%, #00D4A1 100%)',
     social: {
-      linkedin: '#',
-      twitter: '#',
+      linkedin: 'https://www.linkedin.com/in/vladyslav-dehtiarov/',
+      twitter: 'https://x.com/VladDehtiarov',
     },
   },
 ];
@@ -90,18 +90,22 @@ const TeamMember = ({ member, index }) => {
           initial={{ opacity: 0 }}
           whileHover={{ opacity: 1 }}
         >
-          <a href={member.social.linkedin} className="social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M6 9H2V21H6V9Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="4" cy="4" r="2" stroke="currentColor" strokeWidth="2"/>
-            </svg>
-          </a>
-          <a href={member.social.twitter} className="social-link" aria-label="Twitter">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M23 3C22.0424 3.67548 20.9821 4.19211 19.86 4.53C19.2577 3.83751 18.4573 3.34669 17.567 3.12393C16.6767 2.90116 15.7395 2.9572 14.8821 3.28445C14.0247 3.61171 13.2884 4.1944 12.773 4.95372C12.2575 5.71303 11.9877 6.61234 12 7.53V8.53C10.2426 8.57557 8.50127 8.18581 6.93101 7.39545C5.36074 6.60508 4.01032 5.43864 3 4C3 4 -1 13 8 17C5.94053 18.398 3.48716 19.0989 1 19C10 24 21 19 21 7.5C20.9991 7.22145 20.9723 6.94359 20.92 6.67C21.9406 5.66349 22.6608 4.39271 23 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
+          {member.social.linkedin && (
+            <a href={member.social.linkedin} className="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M6 9H2V21H6V9Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="4" cy="4" r="2" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+            </a>
+          )}
+          {member.social.twitter && (
+            <a href={member.social.twitter} className="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M23 3C22.0424 3.67548 20.9821 4.19211 19.86 4.53C19.2577 3.83751 18.4573 3.34669 17.567 3.12393C16.6767 2.90116 15.7395 2.9572 14.8821 3.28445C14.0247 3.61171 13.2884 4.1944 12.773 4.95372C12.2575 5.71303 11.9877 6.61234 12 7.53V8.53C10.2426 8.57557 8.50127 8.18581 6.93101 7.39545C5.36074 6.60508 4.01032 5.43864 3 4C3 4 -1 13 8 17C5.94053 18.398 3.48716 19.0989 1 19C10 24 21 19 21 7.5C20.9991 7.22145 20.9723 6.94359 20.92 6.67C21.9406 5.66349 22.6608 4.39271 23 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+          )}
         </motion.div>
       </div>
       

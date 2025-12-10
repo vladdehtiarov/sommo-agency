@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
 import './Work.css';
 
 const projects = [
@@ -12,6 +13,7 @@ const projects = [
     color: '#7B61FF',
     tech: ['Bubble', 'AI/ML', 'APIs'],
     stats: { time: '2 months', mrr: '$3.2K' },
+    href: '/cases/ma-software',
   },
   {
     id: 2,
@@ -22,6 +24,7 @@ const projects = [
     color: '#00FFC2',
     tech: ['Bubble', 'Webflow', 'Stripe'],
     stats: { users: '10K+', transactions: '$2M+' },
+    href: '/cases/loan-management',
   },
   {
     id: 3,
@@ -32,6 +35,7 @@ const projects = [
     color: '#FF61DC',
     tech: ['Bubble', 'Integrations'],
     stats: { funding: '$1.2M', time: '3.5 months' },
+    href: '/cases/plannly',
   },
   {
     id: 4,
@@ -42,6 +46,7 @@ const projects = [
     color: '#FF8C42',
     tech: ['Bubble', 'AI', 'Cloud'],
     stats: { downloads: '50K+', rating: '4.8★' },
+    href: '/cases/dyvo',
   },
   {
     id: 5,
@@ -52,6 +57,7 @@ const projects = [
     color: '#00D4FF',
     tech: ['Bubble', 'Mobile', 'Real-time'],
     stats: { deliveries: '100K+', drivers: '500+' },
+    href: '/cases/curri',
   },
   {
     id: 6,
@@ -62,6 +68,7 @@ const projects = [
     color: '#A855F7',
     tech: ['Bubble', 'API', 'Database'],
     stats: { lenders: '200+', loans: '$5M+' },
+    href: '/cases/miren',
   },
 ];
 
@@ -72,62 +79,56 @@ const ProjectCard = ({ project, index, isHovered, onHover }) => {
   return (
     <motion.article
       ref={cardRef}
-      className={`project-card ${isHovered === project.id ? 'hovered' : ''} ${isHovered && isHovered !== project.id ? 'dimmed' : ''}`}
+      className={`project-card-wrapper ${isHovered === project.id ? 'hovered' : ''} ${isHovered && isHovered !== project.id ? 'dimmed' : ''}`}
       initial={{ opacity: 0, y: 80 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => onHover(project.id)}
       onMouseLeave={() => onHover(null)}
-      data-cursor="View Case"
     >
-      <div className="project-image-wrapper">
-        <motion.div
-          className="project-image"
-          style={{ backgroundImage: `url(${project.image})` }}
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        />
-        <div className="project-overlay" style={{ background: `linear-gradient(180deg, transparent 0%, ${project.color}20 100%)` }} />
-        
-        {/* Floating stats */}
-        <motion.div 
-          className="project-floating-stats"
-          initial={{ opacity: 0, y: 20 }}
-          whileHover={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          {Object.entries(project.stats).map(([key, value]) => (
-            <div key={key} className="floating-stat">
-              <span className="stat-value">{value}</span>
-              <span className="stat-key">{key}</span>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-      
-      <div className="project-content">
-        <div className="project-meta">
-          <span className="project-category">{project.category}</span>
-          <div className="project-tech">
-            {project.tech.map((tech) => (
-              <span key={tech} className="tech-tag">{tech}</span>
+      <Link to={project.href} className="project-card" data-cursor="View Case">
+        <div className="project-image-wrapper">
+          <div
+            className="project-image"
+            style={{ backgroundImage: `url(${project.image})` }}
+          />
+          <div className="project-overlay" style={{ background: `linear-gradient(180deg, transparent 0%, ${project.color}20 100%)` }} />
+          
+          {/* Floating stats */}
+          <div className="project-floating-stats">
+            {Object.entries(project.stats).map(([key, value]) => (
+              <div key={key} className="floating-stat">
+                <span className="stat-value">{value}</span>
+                <span className="stat-key">{key}</span>
+              </div>
             ))}
           </div>
         </div>
         
-        <h3 className="project-title">{project.title}</h3>
-        <p className="project-description">{project.description}</p>
-        
-        <div className="project-link">
-          <span>View Case Study</span>
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        <div className="project-content">
+          <div className="project-meta">
+            <span className="project-category">{project.category}</span>
+            <div className="project-tech">
+              {project.tech.map((tech) => (
+                <span key={tech} className="tech-tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+          
+          <h3 className="project-title">{project.title}</h3>
+          <p className="project-description">{project.description}</p>
+          
+          <div className="project-link">
+            <span>View Case Study</span>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
-      </div>
-      
-      {/* Glow effect */}
-      <div className="card-glow-effect" style={{ background: project.color }} />
+        
+        {/* Glow effect */}
+        <div className="card-glow-effect" style={{ background: project.color }} />
+      </Link>
     </motion.article>
   );
 };

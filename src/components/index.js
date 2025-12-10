@@ -8,4 +8,5 @@ export { Contact } from './Contact';
 export { Footer } from './Footer';
 export { Layout } from './Layout';
 export { ServicePageLayout } from './ServicePageLayout';
+export { CaseStudyPageLayout } from './CaseStudyPageLayout';
 

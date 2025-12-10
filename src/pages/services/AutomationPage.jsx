@@ -124,22 +124,25 @@ const automationData = {
   ],
   caseStudies: [
     {
-      title: 'Sales Automation',
-      category: 'CRM Integration',
+      title: 'Plannly',
+      category: 'HR Tech',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
-      result: '40% faster lead response',
+      result: '$1.2M funding secured',
+      href: '/cases/plannly',
     },
     {
-      title: 'Invoice Processing',
+      title: 'Loan Management',
       category: 'Finance Automation',
       image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop',
       result: '90% manual work eliminated',
+      href: '/cases/loan-management',
     },
     {
-      title: 'Logistics Sync',
+      title: 'Curri Logistics',
       category: 'Operations',
       image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop',
       result: 'Real-time inventory tracking',
+      href: '/cases/curri',
     },
   ],
   faq: [

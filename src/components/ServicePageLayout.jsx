@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import './ServicePageLayout.css';
 
@@ -34,7 +35,6 @@ export const ServicePageLayout = ({
   faq,
 }) => {
   const heroRef = useRef(null);
-  const isInView = useInView(heroRef, { once: true });
   
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -243,19 +243,23 @@ export const ServicePageLayout = ({
               {caseStudies.map((project, index) => (
                 <motion.div
                   key={project.title}
-                  className="case-card"
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  data-cursor="View Case"
                 >
-                  <div className="case-image" style={{ backgroundImage: `url(${project.image})` }} />
-                  <div className="case-content">
-                    <span className="case-category">{project.category}</span>
-                    <h3 className="case-title">{project.title}</h3>
-                    <p className="case-result">{project.result}</p>
-                  </div>
+                  <Link
+                    to={project.href}
+                    className="case-card"
+                    data-cursor="View Case"
+                  >
+                    <div className="case-image" style={{ backgroundImage: `url(${project.image})` }} />
+                    <div className="case-content">
+                      <span className="case-category">{project.category}</span>
+                      <h3 className="case-title">{project.title}</h3>
+                      <p className="case-result">{project.result}</p>
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>

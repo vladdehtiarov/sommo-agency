@@ -130,18 +130,21 @@ const noCodeData = {
       category: 'Fintech',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       result: '$3.2K MRR in 6 months',
+      href: '/cases/ma-software',
     },
     {
       title: 'Plannly',
       category: 'HR Tech',
       image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
       result: '$1.2M funding secured',
+      href: '/cases/plannly',
     },
     {
       title: 'Loan Management',
       category: 'Fintech',
       image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop',
       result: '10K+ users onboarded',
+      href: '/cases/loan-management',
     },
   ],
   faq: [

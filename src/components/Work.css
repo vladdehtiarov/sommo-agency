@@ -63,22 +63,38 @@
 }
 
 /* Project card */
+.project-card-wrapper {
+  transition: all 0.5s var(--ease-out-expo);
+}
+
+.project-card-wrapper.dimmed {
+  opacity: 0.4;
+  filter: grayscale(0.5);
+}
+
 .project-card {
+  display: block;
   position: relative;
   background: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all 0.5s var(--ease-out-expo);
-}
-
-.project-card.dimmed {
-  opacity: 0.4;
-  filter: grayscale(0.5);
+  text-decoration: none;
+  color: inherit;
 }
 
 .project-card:hover {
   border-color: rgba(255, 255, 255, 0.1);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-card:hover .project-floating-stats {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .project-image-wrapper {
