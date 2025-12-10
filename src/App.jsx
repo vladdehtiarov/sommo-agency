@@ -14,6 +14,17 @@ import {
   DyvoPage,
   CurriPage,
   MirenPage,
+  BlogPage,
+  NoCodeVsTraditionalPage,
+  AIAutomationBusinessPage,
+  BubbleGuidePage,
+  ZapierMakeComparisonPage,
+  MVPNoCodePage,
+  ChatGPTIntegrationPage,
+  LowCodeEnterprisePage,
+  AirtableGuidePage,
+  WorkflowAutomationBestPracticesPage,
+  AICustomerServicePage,
 } from './pages';
 import './App.css';
 
@@ -70,6 +81,18 @@ function App() {
         <Route path="/cases/dyvo" element={<DyvoPage />} />
         <Route path="/cases/curri" element={<CurriPage />} />
         <Route path="/cases/miren" element={<MirenPage />} />
+        {/* Blog */}
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/no-code-vs-traditional-development" element={<NoCodeVsTraditionalPage />} />
+        <Route path="/blog/ai-automation-business-processes" element={<AIAutomationBusinessPage />} />
+        <Route path="/blog/bubble-io-complete-guide" element={<BubbleGuidePage />} />
+        <Route path="/blog/zapier-make-automation-comparison" element={<ZapierMakeComparisonPage />} />
+        <Route path="/blog/mvp-development-no-code" element={<MVPNoCodePage />} />
+        <Route path="/blog/chatgpt-api-integration-guide" element={<ChatGPTIntegrationPage />} />
+        <Route path="/blog/low-code-enterprise-solutions" element={<LowCodeEnterprisePage />} />
+        <Route path="/blog/airtable-database-design" element={<AirtableGuidePage />} />
+        <Route path="/blog/workflow-automation-best-practices" element={<WorkflowAutomationBestPracticesPage />} />
+        <Route path="/blog/ai-customer-service-implementation" element={<AICustomerServicePage />} />
       </Routes>
     </Layout>
   );

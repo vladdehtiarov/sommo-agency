@@ -14,3 +14,18 @@ export { DyvoPage } from './cases/DyvoPage';
 export { CurriPage } from './cases/CurriPage';
 export { MirenPage } from './cases/MirenPage';
 
+// Blog
+export { BlogPage } from './BlogPage';
+export {
+  NoCodeVsTraditionalPage,
+  AIAutomationBusinessPage,
+  BubbleGuidePage,
+  ZapierMakeComparisonPage,
+  MVPNoCodePage,
+  ChatGPTIntegrationPage,
+  LowCodeEnterprisePage,
+  AirtableGuidePage,
+  WorkflowAutomationBestPracticesPage,
+  AICustomerServicePage,
+} from './blog';
+

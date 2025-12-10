@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import './Footer.css';
 
@@ -6,23 +8,16 @@ export const Footer = () => {
 
   const footerLinks = {
     services: [
-      { name: 'No-Code Development', href: '#services' },
-      { name: 'Low-Code Solutions', href: '#services' },
-      { name: 'AI Development', href: '#services' },
-      { name: 'Automation', href: '#services' },
+      { name: 'No-Code Development', href: '/services/no-code' },
+      { name: 'Low-Code Solutions', href: '/services/low-code' },
+      { name: 'AI Development', href: '/services/ai-development' },
+      { name: 'Automation', href: '/services/automation' },
     ],
     company: [
-      { name: 'About Us', href: '#about' },
-      { name: 'Our Work', href: '#work' },
-      { name: 'Blog', href: 'https://sommo.io/blog' },
-      { name: 'Careers', href: '#' },
-    ],
-    resources: [
-      { name: 'Case Studies', href: 'https://www.sommo.io/cases' },
-      { name: 'Tools', href: 'https://sommo.io/tools' },
-      { name: 'Templates', href: 'https://sommo.io/templates' },
-      { name: 'Podcast', href: 'https://sommo.io/podcast' },
-    ],
+      { name: 'About Us', href: '/#about' },
+      { name: 'Our Work', href: '/#work' },
+      { name: 'Blog', href: '/blog' }
+    ]
   };
 
   return (
@@ -31,10 +26,10 @@ export const Footer = () => {
         {/* Top section */}
         <div className="footer-top">
           <div className="footer-brand">
-            <a href="#" className="footer-logo">
+            <Link to="/" className="footer-logo">
               <span className="logo-text">Sommo</span>
               <span className="logo-dot" />
-            </a>
+            </Link>
             <p className="footer-tagline">
               Building digital products 10x faster with no-code, 
               low-code, and AI technologies.
@@ -57,7 +52,7 @@ export const Footer = () => {
               <ul>
                 {footerLinks.services.map((link) => (
                   <li key={link.name}>
-                    <a href={link.href}>{link.name}</a>
+                    <Link to={link.href}>{link.name}</Link>
                   </li>
                 ))}
               </ul>
@@ -67,19 +62,7 @@ export const Footer = () => {
               <ul>
                 {footerLinks.company.map((link) => (
                   <li key={link.name}>
-                    <a href={link.href}>{link.name}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="link-column">
-              <h4>Resources</h4>
-              <ul>
-                {footerLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
-                      {link.name}
-                    </a>
+                    <Link to={link.href}>{link.name}</Link>
                   </li>
                 ))}
               </ul>
