@@ -6,4 +6,6 @@ export { Work } from './Work';
 export { About } from './About';
 export { Contact } from './Contact';
 export { Footer } from './Footer';
+export { Layout } from './Layout';
+export { ServicePageLayout } from './ServicePageLayout';
 

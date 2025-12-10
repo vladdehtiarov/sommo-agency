@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import './Services.css';
 
@@ -7,6 +8,7 @@ const services = [
     id: '01',
     title: 'No-Code Development',
     description: 'Build powerful applications without writing a single line of code. We leverage platforms like Bubble, WeWeb, and FlutterFlow to deliver MVPs in weeks, not months.',
+    href: '/services/no-code',
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <rect x="8" y="8" width="14" height="14" rx="3" stroke="currentColor" strokeWidth="2"/>
@@ -22,6 +24,7 @@ const services = [
     id: '02',
     title: 'Low-Code Solutions',
     description: 'Accelerate development with visual builders combined with custom code. Perfect for complex logic and integrations while maintaining speed and flexibility.',
+    href: '/services/low-code',
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M14 16L8 24L14 32" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -35,6 +38,7 @@ const services = [
     id: '03',
     title: 'AI Development',
     description: 'Integrate cutting-edge AI into your products. From ChatGPT-powered features to custom ML models, we make artificial intelligence accessible and practical.',
+    href: '/services/ai-development',
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <circle cx="24" cy="12" r="4" stroke="currentColor" strokeWidth="2"/>
@@ -50,6 +54,7 @@ const services = [
     id: '04',
     title: 'Automation & Integration',
     description: 'Connect your tools and automate workflows. We build seamless integrations using Zapier, Make, and custom APIs to eliminate manual work.',
+    href: '/services/automation',
     icon: (
       <svg viewBox="0 0 48 48" fill="none">
         <path d="M8 24H16M32 24H40" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -69,33 +74,37 @@ const ServiceCard = ({ service, index }) => {
   return (
     <motion.div
       ref={cardRef}
-      className="service-card"
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      data-cursor="Explore"
       whileHover={{ y: -8 }}
     >
-      <div className="card-glow" style={{ background: service.gradient }} />
-      
-      <div className="card-header">
-        <span className="card-number">{service.id}</span>
-        <div className="card-icon" style={{ color: service.gradient.match(/#[A-Fa-f0-9]{6}/)?.[0] }}>
-          {service.icon}
+      <Link
+        to={service.href}
+        className="service-card"
+        data-cursor="Explore"
+      >
+        <div className="card-glow" style={{ background: service.gradient }} />
+        
+        <div className="card-header">
+          <span className="card-number">{service.id}</span>
+          <div className="card-icon" style={{ color: service.gradient.match(/#[A-Fa-f0-9]{6}/)?.[0] }}>
+            {service.icon}
+          </div>
         </div>
-      </div>
-      
-      <h3 className="card-title">{service.title}</h3>
-      <p className="card-description">{service.description}</p>
-      
-      <div className="card-footer">
-        <span className="learn-more">
-          Learn more
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </span>
-      </div>
+        
+        <h3 className="card-title">{service.title}</h3>
+        <p className="card-description">{service.description}</p>
+        
+        <div className="card-footer">
+          <span className="learn-more">
+            Learn more
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </Link>
     </motion.div>
   );
 };

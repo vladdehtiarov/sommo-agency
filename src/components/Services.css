@@ -65,6 +65,7 @@
 
 /* Service card */
 .service-card {
+  display: block;
   position: relative;
   background: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -72,6 +73,8 @@
   padding: 40px;
   overflow: hidden;
   transition: all 0.5s var(--ease-out-expo);
+  text-decoration: none;
+  color: inherit;
 }
 
 .service-card:hover {

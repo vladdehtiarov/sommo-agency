@@ -1,16 +1,42 @@
 import { useEffect } from 'react';
-import { useSmoothScroll } from './hooks/useSmoothScroll';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useSmoothScroll, scrollToTop, getLenis } from './hooks/useSmoothScroll';
+import { Layout } from './components/Layout';
 import {
-  CustomCursor,
-  Header,
-  Hero,
-  Services,
-  Work,
-  About,
-  Contact,
-  Footer,
-} from './components';
+  HomePage,
+  NoCodePage,
+  LowCodePage,
+  AIDevelopmentPage,
+  AutomationPage,
+} from './pages';
 import './App.css';
+
+// Scroll to top on route change, or to hash if present
+const ScrollToTop = () => {
+  const { pathname, hash } = useLocation();
+  
+  useEffect(() => {
+    if (hash) {
+      // Scroll to hash element
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          const lenis = getLenis();
+          if (lenis) {
+            lenis.scrollTo(element, { offset: -100 });
+          } else {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }, 100);
+    } else {
+      // Scroll to top immediately on page change
+      scrollToTop(true);
+    }
+  }, [pathname, hash]);
+  
+  return null;
+};
 
 function App() {
   // Initialize smooth scrolling
@@ -22,28 +48,16 @@ function App() {
   }, []);
 
   return (
-    <>
-      {/* Custom cursor for desktop */}
-      <CustomCursor />
-      
-      {/* Noise overlay for texture */}
-      <div className="noise-overlay" />
-      
-      {/* Header/Navigation */}
-      <Header />
-      
-      {/* Main content */}
-      <main>
-        <Hero />
-        <Services />
-        <Work />
-        <About />
-        <Contact />
-      </main>
-      
-      {/* Footer */}
-      <Footer />
-    </>
+    <Layout>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/services/no-code" element={<NoCodePage />} />
+        <Route path="/services/low-code" element={<LowCodePage />} />
+        <Route path="/services/ai-development" element={<AIDevelopmentPage />} />
+        <Route path="/services/automation" element={<AutomationPage />} />
+      </Routes>
+    </Layout>
   );
 }
 
