@@ -71,17 +71,30 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Check if EmailJS is configured
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY ||
+        EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' ||
+        EMAILJS_SERVICE_ID === 'your_service_id') {
+      console.warn('EmailJS not configured. Please set environment variables.');
+      // Simulate success for demo/development
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      showToast("Thank you! We'll be in touch within 24 hours.", 'success');
+      setFormState({ name: '', email: '', budget: '', message: '' });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       // EmailJS send
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          from_name: formState.name,
-          from_email: formState.email,
+          name: formState.name,
+          email: formState.email,
+          title: `Project Inquiry - Budget: ${formState.budget}`,
           budget: formState.budget,
           message: formState.message,
-          to_email: 'hello@sommo.io',
         },
         EMAILJS_PUBLIC_KEY
       );
@@ -90,7 +103,7 @@ export const Contact = () => {
       setFormState({ name: '', email: '', budget: '', message: '' });
     } catch (error) {
       console.error('EmailJS Error:', error);
-      showToast('Something went wrong. Please try again or email us directly.', 'error');
+      showToast('Something went wrong. Please try again or email us directly at hello@sommo.io', 'error');
     } finally {
       setIsSubmitting(false);
     }

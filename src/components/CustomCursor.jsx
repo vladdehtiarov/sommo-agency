@@ -29,6 +29,7 @@ export const CustomCursor = () => {
     };
 
     const handleMouseEnter = (e) => {
+      if (!e.target || typeof e.target.closest !== 'function') return;
       const target = e.target.closest('[data-cursor]');
       if (target) {
         setIsHovering(true);
@@ -37,6 +38,7 @@ export const CustomCursor = () => {
     };
 
     const handleMouseLeave = (e) => {
+      if (!e.target || typeof e.target.closest !== 'function') return;
       const target = e.target.closest('[data-cursor]');
       if (target) {
         setIsHovering(false);
