@@ -191,7 +191,7 @@ export const TermsOfUsePage = () => {
                 For questions about these Terms of Use, please contact us:
               </p>
               <ul>
-                <li>Email: <a href="mailto:hello@sommoagency.com">hello@sommoagency.com</a></li>
+                <li>Email: <a href="mailto:hello@sommo-agency.com">hello@sommo-agency.com</a></li>
                 <li>LinkedIn: <a href="https://www.linkedin.com/company/sommo-agency/" target="_blank" rel="noopener noreferrer">Sommo Agency</a></li>
               </ul>
             </section>

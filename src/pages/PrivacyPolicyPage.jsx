@@ -118,7 +118,7 @@ export const PrivacyPolicyPage = () => {
               </ul>
               <p>
                 To exercise these rights, please contact us at{' '}
-                <a href="mailto:hello@sommoagency.com">hello@sommoagency.com</a>.
+                <a href="mailto:hello@sommo-agency.com">hello@sommo-agency.com</a>.
               </p>
             </section>
 
@@ -160,7 +160,7 @@ export const PrivacyPolicyPage = () => {
                 If you have any questions about this Privacy Policy, please contact us:
               </p>
               <ul>
-                <li>Email: <a href="mailto:hello@sommoagency.com">hello@sommoagency.com</a></li>
+                <li>Email: <a href="mailto:hello@sommo-agency.com">hello@sommo-agency.com</a></li>
                 <li>LinkedIn: <a href="https://www.linkedin.com/company/sommo-agency/" target="_blank" rel="noopener noreferrer">Sommo Agency</a></li>
               </ul>
             </section>

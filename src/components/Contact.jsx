@@ -103,7 +103,7 @@ export const Contact = () => {
       setFormState({ name: '', email: '', budget: '', message: '' });
     } catch (error) {
       console.error('EmailJS Error:', error);
-      showToast('Something went wrong. Please try again or email us directly at hello@sommoagency.com', 'error');
+      showToast('Something went wrong. Please try again or email us directly at hello@sommo-agency.com', 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -158,14 +158,14 @@ export const Contact = () => {
             </p>
 
             <div className="contact-details">
-              <a href="mailto:hello@sommoagency.com" className="contact-link">
+              <a href="mailto:hello@sommo-agency.com" className="contact-link">
                 <span className="contact-link-icon">
                   <svg viewBox="0 0 24 24" fill="none">
                     <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M22 6L12 13L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </span>
-                <span>hello@sommoagency.com</span>
+                <span>hello@sommo-agency.com</span>
               </a>
 
               <div className="contact-social">
