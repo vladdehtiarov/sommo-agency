@@ -75,8 +75,8 @@ export const Footer = () => {
           <div className="footer-copyright">
             <p>© {currentYear} Sommo Agency. All rights reserved.</p>
             <div className="legal-links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Use</a>
+              <Link to="/privacy-policy">Privacy Policy</Link>
+              <Link to="/terms-of-use">Terms of Use</Link>
             </div>
           </div>
 

@@ -1,49 +1,17 @@
-import { useEffect, useRef } from 'react';
-import Lenis from '@studio-freight/lenis';
+// Smooth scroll disabled for better performance
+// Using native CSS scroll-behavior: smooth instead
 
-// Global Lenis instance for access from other components
-let lenisInstance = null;
-
-export const getLenis = () => lenisInstance;
+export const getLenis = () => null;
 
 export const scrollToTop = (immediate = false) => {
-  if (lenisInstance) {
-    lenisInstance.scrollTo(0, { immediate });
-  } else {
-    window.scrollTo(0, 0);
-  }
+  window.scrollTo({ 
+    top: 0, 
+    behavior: immediate ? 'auto' : 'smooth' 
+  });
 };
 
 export const useSmoothScroll = () => {
-  const lenisRef = useRef(null);
-
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
-
-    lenisRef.current = lenis;
-    lenisInstance = lenis;
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-      lenisInstance = null;
-    };
-  }, []);
-
-  return lenisRef;
+  // No-op - using native smooth scroll
+  return { current: null };
 };
 

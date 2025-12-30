@@ -15,7 +15,7 @@
 .contact-gradient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(50px);
 }
 
 .contact-gradient-orb.orb-1 {

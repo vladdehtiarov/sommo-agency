@@ -25,6 +25,8 @@ import {
   AirtableGuidePage,
   WorkflowAutomationBestPracticesPage,
   AICustomerServicePage,
+  PrivacyPolicyPage,
+  TermsOfUsePage,
 } from './pages';
 import './App.css';
 
@@ -93,6 +95,9 @@ function App() {
         <Route path="/blog/airtable-database-design" element={<AirtableGuidePage />} />
         <Route path="/blog/workflow-automation-best-practices" element={<WorkflowAutomationBestPracticesPage />} />
         <Route path="/blog/ai-customer-service-implementation" element={<AICustomerServicePage />} />
+        {/* Legal */}
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-of-use" element={<TermsOfUsePage />} />
       </Routes>
     </Layout>
   );

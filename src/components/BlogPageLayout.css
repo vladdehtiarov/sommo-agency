@@ -19,7 +19,7 @@
 .blog-gradient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(50px);
 }
 
 .blog-gradient-orb.orb-1 {

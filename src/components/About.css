@@ -18,7 +18,7 @@
   background: radial-gradient(circle, rgba(123, 97, 255, 0.1) 0%, transparent 70%);
   top: 20%;
   left: -20%;
-  filter: blur(100px);
+  filter: blur(50px);
 }
 
 .about-gradient-2 {
@@ -28,7 +28,7 @@
   background: radial-gradient(circle, rgba(0, 255, 194, 0.08) 0%, transparent 70%);
   bottom: 10%;
   right: -10%;
-  filter: blur(100px);
+  filter: blur(50px);
 }
 
 /* Intro */

@@ -29,3 +29,7 @@ export {
   AICustomerServicePage,
 } from './blog';
 
+// Legal
+export { PrivacyPolicyPage } from './PrivacyPolicyPage';
+export { TermsOfUsePage } from './TermsOfUsePage';
+

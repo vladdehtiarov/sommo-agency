@@ -38,7 +38,7 @@
 .static-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(40px);
   pointer-events: none;
 }
 
