@@ -34,11 +34,36 @@
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
 }
 
-.floating-orb {
+/* Static orbs - no JS animations, just CSS */
+.static-orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
   pointer-events: none;
+}
+
+.static-orb.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(123, 97, 255, 0.15) 0%, transparent 70%);
+  left: 60%;
+  top: 20%;
+}
+
+.static-orb.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 255, 194, 0.1) 0%, transparent 70%);
+  left: 10%;
+  top: 60%;
+}
+
+.static-orb.orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 97, 220, 0.1) 0%, transparent 70%);
+  left: 80%;
+  top: 70%;
 }
 
 /* Content */
@@ -246,6 +271,12 @@
   height: 7px;
   background: var(--accent-cyan);
   border-radius: 50%;
+  animation: scrollBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
 }
 
 /* Responsive */

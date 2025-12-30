@@ -1,6 +1,5 @@
 import { useRef } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import './About.css';
 
 const team = [
@@ -22,7 +21,6 @@ const team = [
     gradient: 'linear-gradient(135deg, #00FFC2 0%, #00D4A1 100%)',
     social: {
       linkedin: 'https://www.linkedin.com/in/vladyslav-dehtiarov/',
-      twitter: 'https://x.com/VladDehtiarov',
     },
   },
 ];
@@ -70,26 +68,19 @@ const TeamMember = ({ member, index }) => {
     <motion.div
       ref={ref}
       className="team-member"
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
-      data-cursor="Connect"
+      transition={{ duration: 0.5, delay: index * 0.15 }}
     >
       <div className="member-image-wrapper">
-        <motion.div
+        <div
           className="member-image"
           style={{ backgroundImage: `url(${member.image})` }}
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         />
         <div className="member-gradient" style={{ background: member.gradient }} />
         
         {/* Social links */}
-        <motion.div
-          className="member-social"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-        >
+        <div className="member-social">
           {member.social.linkedin && (
             <a href={member.social.linkedin} className="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none">
@@ -106,7 +97,7 @@ const TeamMember = ({ member, index }) => {
               </svg>
             </a>
           )}
-        </motion.div>
+        </div>
       </div>
       
       <div className="member-info">
@@ -121,21 +112,14 @@ const TeamMember = ({ member, index }) => {
 export const About = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
     <section ref={sectionRef} id="about" className="about">
-      {/* Background */}
-      <motion.div className="about-bg" style={{ y }}>
+      {/* Background - static */}
+      <div className="about-bg">
         <div className="about-gradient-1" />
         <div className="about-gradient-2" />
-      </motion.div>
+      </div>
 
       <div className="container">
         {/* About intro */}

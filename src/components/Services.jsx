@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import './Services.css';
 
 const services = [
@@ -74,15 +74,13 @@ const ServiceCard = ({ service, index }) => {
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -8 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       <Link
         to={service.href}
         className="service-card"
-        data-cursor="Explore"
       >
         <div className="card-glow" style={{ background: service.gradient }} />
         
@@ -112,19 +110,12 @@ const ServiceCard = ({ service, index }) => {
 export const Services = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
     <section ref={sectionRef} id="services" className="services">
-      <motion.div className="services-bg" style={{ y: backgroundY }}>
+      <div className="services-bg">
         <div className="services-gradient" />
-      </motion.div>
+      </div>
 
       <div className="container">
         {/* Section header */}

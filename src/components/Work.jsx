@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import './Work.css';
@@ -72,21 +72,19 @@ const projects = [
   },
 ];
 
-const ProjectCard = ({ project, index, isHovered, onHover }) => {
+const ProjectCard = ({ project, index }) => {
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, margin: '-50px' });
 
   return (
     <motion.article
       ref={cardRef}
-      className={`project-card-wrapper ${isHovered === project.id ? 'hovered' : ''} ${isHovered && isHovered !== project.id ? 'dimmed' : ''}`}
-      initial={{ opacity: 0, y: 80 }}
+      className="project-card-wrapper"
+      initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      onMouseEnter={() => onHover(project.id)}
-      onMouseLeave={() => onHover(null)}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
     >
-      <Link to={project.href} className="project-card" data-cursor="View Case">
+      <Link to={project.href} className="project-card">
         <div className="project-image-wrapper">
           <div
             className="project-image"
@@ -136,7 +134,6 @@ const ProjectCard = ({ project, index, isHovered, onHover }) => {
 export const Work = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  const [hoveredProject, setHoveredProject] = useState(null);
 
   return (
     <section ref={sectionRef} id="work" className="work">
@@ -147,16 +144,16 @@ export const Work = () => {
             className="section-eyebrow"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
             Selected Work
           </motion.span>
           
           <motion.h2
             className="section-title"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             Products that
             <br />
@@ -170,8 +167,7 @@ export const Work = () => {
             className="view-all-link"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            data-cursor="View All"
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             View All Cases
             <svg viewBox="0 0 24 24" fill="none">
@@ -187,8 +183,6 @@ export const Work = () => {
               key={project.id}
               project={project}
               index={index}
-              isHovered={hoveredProject}
-              onHover={setHoveredProject}
             />
           ))}
         </div>
