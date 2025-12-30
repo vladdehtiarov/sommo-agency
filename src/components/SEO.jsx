@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_NAME = 'Sommo Agency';
-const SITE_URL = 'https://sommo-agency.com';
+const SITE_URL = 'https://sommoagency.com';
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 export const SEO = ({
@@ -37,7 +37,7 @@ export const SEO = ({
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     description: defaultDescription,
-    email: 'hello@sommo-agency.com',
+    email: 'hello@sommoagency.com',
     sameAs: [
       'https://www.linkedin.com/company/sommo-agency/',
     ],

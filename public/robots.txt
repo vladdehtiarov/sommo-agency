@@ -1,11 +1,11 @@
 # robots.txt for Sommo Agency
-# https://sommo-agency.com
+# https://sommoagency.com
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://sommo-agency.com/sitemap.xml
+Sitemap: https://sommoagency.com/sitemap.xml
 
 # Crawl-delay (optional, for politeness)
 Crawl-delay: 1
