@@ -1,0 +1,19 @@
+# robots.txt for Sommo Agency
+# https://sommo-agency.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sommo-agency.com/sitemap.xml
+
+# Crawl-delay (optional, for politeness)
+Crawl-delay: 1
+
+# Block specific bots if needed
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+

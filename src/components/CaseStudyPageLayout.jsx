@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { SEO } from './SEO';
 import './CaseStudyPageLayout.css';
 
 export const CaseStudyPageLayout = ({
@@ -19,6 +20,7 @@ export const CaseStudyPageLayout = ({
   testimonial,
   gallery,
   nextCase,
+  seo,
 }) => {
   const heroRef = useRef(null);
   const isInView = useInView(heroRef, { once: true });
@@ -34,6 +36,15 @@ export const CaseStudyPageLayout = ({
 
   return (
     <div className="case-study-page">
+      {seo && (
+        <SEO
+          title={seo.title || `${title} - Case Study`}
+          description={seo.description || description}
+          keywords={seo.keywords}
+          url={seo.url}
+          image={heroImage}
+        />
+      )}
       {/* Hero Section */}
       <section ref={heroRef} className="case-hero">
         <motion.div 

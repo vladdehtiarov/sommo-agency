@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion, useInView } from 'framer-motion';
+import { SEO } from './SEO';
 import './BlogPageLayout.css';
 
 export const BlogPageLayout = ({
@@ -14,14 +15,33 @@ export const BlogPageLayout = ({
   coverImage,
   content,
   relatedPosts = [],
+  seo,
 }) => {
   const heroRef = useRef(null);
   const contentRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
   const isContentInView = useInView(contentRef, { once: true, margin: '-100px' });
 
+  // Format date for article schema
+  const publishedDate = new Date(date).toISOString();
+
   return (
     <article className="blog-post">
+      {seo && (
+        <SEO
+          title={seo.title || title}
+          description={seo.description || excerpt}
+          keywords={seo.keywords || category}
+          url={seo.url}
+          image={coverImage}
+          type="article"
+          article={{
+            publishedDate,
+            modifiedDate: publishedDate,
+            tags: [category],
+          }}
+        />
+      )}
       {/* Hero Section */}
       <section ref={heroRef} className="blog-hero">
         <div className="blog-hero-bg">

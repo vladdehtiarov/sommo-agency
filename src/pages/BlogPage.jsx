@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion, useInView } from 'framer-motion';
+import { SEO } from '../components/SEO';
 import './BlogPage.css';
 
 const blogPosts = [
@@ -165,6 +166,12 @@ export const BlogPage = () => {
 
   return (
     <div className="blog-page">
+      <SEO
+        title="Blog - Insights on No-Code, AI & Automation"
+        description="Explore expert insights on no-code development, AI integration, automation, and digital product building. Learn from Sommo Agency's experience in delivering 100+ successful projects."
+        keywords="no-code blog, low-code articles, AI development insights, automation tutorials, Bubble.io guide, Zapier tips, startup development blog"
+        url="/blog"
+      />
       {/* Hero */}
       <section ref={heroRef} className="blog-list-hero">
         <div className="blog-list-hero-bg">

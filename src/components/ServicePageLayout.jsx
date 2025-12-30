@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { SEO } from './SEO';
 import './ServicePageLayout.css';
 
 const AnimatedText = ({ children, delay = 0 }) => {
@@ -33,6 +34,7 @@ export const ServicePageLayout = ({
   process,
   caseStudies,
   faq,
+  seo,
 }) => {
   const heroRef = useRef(null);
   
@@ -46,6 +48,15 @@ export const ServicePageLayout = ({
 
   return (
     <div className="service-page">
+      {seo && (
+        <SEO
+          title={seo.title || title}
+          description={seo.description || subtitle}
+          keywords={seo.keywords}
+          url={seo.url}
+          type="service"
+        />
+      )}
       {/* Hero Section */}
       <section ref={heroRef} className="service-hero">
         <div className="service-hero-bg">

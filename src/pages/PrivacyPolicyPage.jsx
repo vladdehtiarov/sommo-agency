@@ -1,9 +1,17 @@
 import { motion } from 'framer-motion';
+import { SEO } from '../components/SEO';
 import './LegalPage.css';
 
 export const PrivacyPolicyPage = () => {
   return (
     <div className="legal-page">
+      <SEO
+        title="Privacy Policy"
+        description="Read Sommo Agency's Privacy Policy. Learn how we collect, use, and protect your personal information when you use our services."
+        keywords="privacy policy, data protection, personal information, GDPR"
+        url="/privacy-policy"
+        noindex={false}
+      />
       <div className="legal-bg">
         <div className="legal-gradient" />
       </div>

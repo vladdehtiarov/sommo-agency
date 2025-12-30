@@ -1,9 +1,17 @@
 import { motion } from 'framer-motion';
+import { SEO } from '../components/SEO';
 import './LegalPage.css';
 
 export const TermsOfUsePage = () => {
   return (
     <div className="legal-page">
+      <SEO
+        title="Terms of Use"
+        description="Read Sommo Agency's Terms of Use. Understand the terms and conditions for using our no-code, low-code, and AI development services."
+        keywords="terms of use, terms and conditions, service agreement, legal terms"
+        url="/terms-of-use"
+        noindex={false}
+      />
       <div className="legal-bg">
         <div className="legal-gradient" />
       </div>

@@ -10,4 +10,5 @@ export { Layout } from './Layout';
 export { ServicePageLayout } from './ServicePageLayout';
 export { CaseStudyPageLayout } from './CaseStudyPageLayout';
 export { BlogPageLayout } from './BlogPageLayout';
+export { SEO } from './SEO';
 
