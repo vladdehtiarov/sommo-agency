@@ -27,13 +27,14 @@ import {
   AICustomerServicePage,
   PrivacyPolicyPage,
   TermsOfUsePage,
+  ToolPage,
 } from './pages';
 import './App.css';
 
 // Scroll to top on route change, or to hash if present
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
-  
+
   useEffect(() => {
     if (hash) {
       // Scroll to hash element
@@ -53,7 +54,7 @@ const ScrollToTop = () => {
       scrollToTop(true);
     }
   }, [pathname, hash]);
-  
+
   return null;
 };
 
@@ -76,6 +77,15 @@ function App() {
         <Route path="/services/low-code" element={<LowCodePage />} />
         <Route path="/services/ai-development" element={<AIDevelopmentPage />} />
         <Route path="/services/automation" element={<AutomationPage />} />
+
+        {/* Specific Tools */}
+        <Route path="/services/bubble-development" element={<ToolPage toolKey="bubble-development" />} />
+        <Route path="/services/weweb-development" element={<ToolPage toolKey="weweb-development" />} />
+        <Route path="/services/flutterflow-development" element={<ToolPage toolKey="flutterflow-development" />} />
+        <Route path="/services/make-automation" element={<ToolPage toolKey="make-automation" />} />
+        <Route path="/services/n8n-automation" element={<ToolPage toolKey="n8n-automation" />} />
+        <Route path="/services/supabase-backend" element={<ToolPage toolKey="supabase-backend" />} />
+        <Route path="/services/api-integrations" element={<ToolPage toolKey="api-integrations" />} />
         {/* Case Studies */}
         <Route path="/cases/ma-software" element={<MASoftwarePage />} />
         <Route path="/cases/loan-management" element={<LoanManagementPage />} />

@@ -17,11 +17,11 @@ export const SEO = ({
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} - No-Code, Low-Code & AI Development Agency`;
   const fullUrl = url ? `${SITE_URL}${url}` : SITE_URL;
 
-  const defaultDescription = 
+  const defaultDescription =
     'Sommo Agency builds digital products 10x faster using no-code, low-code, and AI technologies. ' +
     'Expert development with Bubble, WeWeb, FlutterFlow, and AI integration. 100+ successful projects.';
 
-  const defaultKeywords = 
+  const defaultKeywords =
     'no-code development, low-code solutions, AI development, Bubble developer, ' +
     'web app development, mobile app development, automation, Zapier, Make, ' +
     'MVP development, startup development, digital agency';
@@ -118,7 +118,7 @@ export const SEO = ({
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={metaKeywords} />
       <link rel="canonical" href={fullUrl} />
-      
+
       {/* Robots */}
       {noindex ? (
         <meta name="robots" content="noindex, nofollow" />

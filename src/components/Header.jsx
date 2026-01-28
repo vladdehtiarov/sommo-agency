@@ -36,7 +36,11 @@ export const Header = () => {
     { name: 'No-Code Development', href: '/services/no-code' },
     { name: 'Low-Code Solutions', href: '/services/low-code' },
     { name: 'AI Development', href: '/services/ai-development' },
-    { name: 'Automation & Integration', href: '/services/automation' },
+    { name: 'Automation', href: '/services/automation' },
+    { name: 'Bubble Development', href: '/services/bubble-development' },
+    { name: 'WeWeb & Supabase', href: '/services/weweb-development' },
+    { name: 'FlutterFlow Mobile', href: '/services/flutterflow-development' },
+    { name: 'Make & n8n', href: '/services/make-automation' },
   ];
 
   const navLinks = [
@@ -65,7 +69,7 @@ export const Header = () => {
     >
       <div className="header-container">
         <Link to="/" className="logo" data-cursor="Home">
-          <motion.div 
+          <motion.div
             className="logo-mark"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -77,7 +81,7 @@ export const Header = () => {
 
         <nav className="nav-desktop">
           {/* Services Dropdown */}
-          <div 
+          <div
             className="nav-dropdown"
             onMouseEnter={() => setIsServicesOpen(true)}
             onMouseLeave={() => setIsServicesOpen(false)}
@@ -85,10 +89,10 @@ export const Header = () => {
             <button className="nav-link nav-dropdown-trigger" data-cursor="View">
               <span className="nav-link-text">Services</span>
               <svg className={`dropdown-arrow ${isServicesOpen ? 'open' : ''}`} viewBox="0 0 24 24" fill="none">
-                <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            
+
             <AnimatePresence>
               {isServicesOpen && (
                 <motion.div
@@ -164,11 +168,11 @@ export const Header = () => {
         >
           <span>Start Project</span>
           <svg className="arrow-icon" viewBox="0 0 24 24" fill="none">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </motion.a>
 
-        <button 
+        <button
           className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
@@ -233,7 +237,7 @@ export const Header = () => {
                   </motion.div>
                 )
               ))}
-              
+
               <motion.a
                 href="/#contact"
                 className="mobile-cta"

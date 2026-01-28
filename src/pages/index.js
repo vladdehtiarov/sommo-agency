@@ -5,6 +5,7 @@ export { NoCodePage } from './services/NoCodePage';
 export { LowCodePage } from './services/LowCodePage';
 export { AIDevelopmentPage } from './services/AIDevelopmentPage';
 export { AutomationPage } from './services/AutomationPage';
+export { ToolPage } from './services/ToolPage';
 
 // Case Studies
 export { MASoftwarePage } from './cases/MASoftwarePage';
